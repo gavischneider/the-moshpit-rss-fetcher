@@ -1,8 +1,8 @@
-import { feeds } from "./constants/feeds";
-import { Publisher } from "./types/Publisher";
-import { Post } from "./types/Post";
-import getPostsFromUrl from "./services/getPostsFromUrl";
-import getImgFromHTML from "./services/getImgFromHtml";
+import { feeds } from "../constants/feeds";
+import { Publisher } from "../types/Publisher";
+import { Post } from "../types/Post";
+import getPostsFromUrl from "./getPostsFromUrl";
+import getImgFromHTML from "./getImgFromHtml";
 
 const postModel = require("./models/post");
 const tagModel = require("./models/tag");

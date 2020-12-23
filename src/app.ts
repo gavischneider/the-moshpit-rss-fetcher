@@ -6,7 +6,9 @@ import express, {
   Router,
 } from "express";
 
-import rssFetch from "./rssFetch";
+import rssFetch from "./services/rssFetch";
+import checkForNewFeeds from "./services/checkForNewFeeds";
+import addNewPublisher from "./services/addNewPublisher";
 
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -36,9 +38,17 @@ mongoose
   .then(() => console.log("Connected to database"))
   .catch((err: Error) => console.log(`There was an error: ${err}`));
 
+/*
+  1. Load feeds from DB
+  2. Ocasionally check if there are new feeds, if so, fetch them
+  3. Once every hour or two call rssFetch
+   */
+
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Home Route");
 });
+
+// Add route to add feeds to db, then call updateFeeds
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
