@@ -1,4 +1,3 @@
-import { resolveSoa } from "dns";
 import express, {
   Application,
   Request,
