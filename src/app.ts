@@ -6,9 +6,10 @@ import express, {
   Router,
 } from "express";
 
-import rssFetch from "./services/rssFetch";
-import checkForNewFeeds from "./services/checkForNewFeeds";
-import addNewPublisher from "./services/addNewPublisher";
+const rssFetch: Function = require("./services/rssFetch");
+const checkForNewFeeds: Function = require("./services/checkForNewFeeds");
+const addNewPublisher: Function = require("./services/addNewPublisher");
+const loadFeeds: Function = require("./services/loadFeeds");
 
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -45,7 +46,17 @@ mongoose
    */
 
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("Home Route");
+  loadFeeds((err: Error, data: any) => {
+    if (err) {
+      console.log(`Problem loading feeds: ${err}`);
+    } else {
+      console.log(data);
+      console.log(`Type of feeds: ${typeof data}`);
+      //res.send(feeds);
+
+      rssFetch(data);
+    }
+  });
 });
 
 // Add route to add feeds to db, then call updateFeeds

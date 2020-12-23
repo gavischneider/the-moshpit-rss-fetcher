@@ -16,7 +16,11 @@ const tagSchema = new mongoose.Schema({
 const tagModel = (module.exports = mongoose.model("tag", tagSchema));
 
 // Add new tag
-module.exports.addTag = (newTagTitle: string, postId: ObjectId, callback: Function) => {
+module.exports.addTag = (
+  newTagTitle: string,
+  postId: ObjectId,
+  callback: Function
+) => {
   let ids: ObjectId[] = [];
   ids.push(postId);
   const tag = new tagModel({
@@ -42,6 +46,8 @@ module.exports.addOrUpdateTag = (
       result.save((err: Error) => {
         if (err) {
           console.log(`Error saving new tag: ${err}`);
+        } else {
+          callback(); //result
         }
       });
     } else {
@@ -51,7 +57,7 @@ module.exports.addOrUpdateTag = (
           console.log("error occured while creating new tag", err);
         } else {
           console.log(data);
-          callback();
+          callback(); //result
         }
       });
     }

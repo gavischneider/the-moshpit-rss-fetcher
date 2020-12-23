@@ -11,8 +11,8 @@ const getImgFromHTML = (description: string): string => {
   if (imageSrc === null) {
     imageSrc = " ";
   }
-  console.log("OOOOOOOOOO Image source is: " + imageSrc);
+  //console.log("OOOOOOOOOO Image source is: " + imageSrc);
   return imageSrc;
 };
 
-export default getImgFromHTML;
+module.exports = getImgFromHTML;

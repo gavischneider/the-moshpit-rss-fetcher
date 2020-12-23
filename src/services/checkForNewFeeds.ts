@@ -1,3 +1,3 @@
 const checkForNewFeeds = () => {};
 
-export default checkForNewFeeds;
+module.exports = checkForNewFeeds;

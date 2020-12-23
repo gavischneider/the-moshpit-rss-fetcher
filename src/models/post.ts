@@ -39,16 +39,15 @@ module.exports.addPost = (newPost: Post, callback: Function) => {
   post.save(callback);
 };
 
-module.exports.searchForPost = async (postId: string) => {
-  let exists = false;
-  await postModel.findOne({ id: postId }).exec((err: Error, result: any) => {
+module.exports.searchForPost = (postId: string, callback: Function) => {
+  postModel.findOne({ id: postId }).exec((err: Error, result: any) => {
+    console.log(`RESULT: ${result}`);
     if (result) {
       // The post already exists
-      exists = true;
-      return exists;
+      callback(null, true);
     } else {
       // The post does not exist
-      return exists;
+      callback(null, false);
     }
   });
 };

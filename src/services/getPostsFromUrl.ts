@@ -4,7 +4,7 @@ var feed = require("rss-to-json");
 const getPostsFromUrl = async (url: string, callback: Function) => {
   var rss = await feed.load(url);
   if (rss) {
-    console.log(rss.items[0]);
+    //console.log(rss.items[0]);
     //console.log(new Date(rss.items[0].created));
     callback(null, rss);
   } else {
@@ -12,4 +12,4 @@ const getPostsFromUrl = async (url: string, callback: Function) => {
   }
 };
 
-export default getPostsFromUrl;
+module.exports = getPostsFromUrl;

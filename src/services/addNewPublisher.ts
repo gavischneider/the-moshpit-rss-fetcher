@@ -20,4 +20,4 @@ const addNewPublisher = (req: Request, res: Response) => {
   }
 };
 
-export default addNewPublisher;
+module.exports = addNewPublisher;
