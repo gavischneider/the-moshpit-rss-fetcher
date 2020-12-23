@@ -46,8 +46,9 @@ module.exports.addOrUpdateTag = (
       result.save((err: Error) => {
         if (err) {
           console.log(`Error saving new tag: ${err}`);
+          callback(err);
         } else {
-          callback(); //result
+          callback(null, result);
         }
       });
     } else {
@@ -55,9 +56,10 @@ module.exports.addOrUpdateTag = (
       tagModel.addTag(tagTitle, newPostId, (err: Error, data: any) => {
         if (err) {
           console.log("error occured while creating new tag", err);
+          callback(err);
         } else {
           console.log(data);
-          callback(); //result
+          callback(null, result);
         }
       });
     }
