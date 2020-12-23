@@ -61,7 +61,8 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 
 // Add route to add feeds to db, then call updateFeeds
 app.post("/addfeed", (req: Request, res: Response, next: NextFunction) => {
-  //...
+  //...call addNewPublisher()
+  // Get the new feeds posts and add to db
 });
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

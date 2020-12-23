@@ -1,0 +1,51 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
+jobs:
+  build:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: Build App Code
+          command: |
+            npm i
+            npm run build
+
+  test:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: Test App
+          command: |
+            npm i
+            npm install jest jest-cli --global
+            npm run test
+
+  scan:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: Audit Dependencies
+          command: |
+            npm i
+            npm audit fix --audit-level=critical --force
+
+# workflows:
+#   node-tests:
+#     jobs:
+#       - node/test
+
+workflows:
+  default:
+    jobs:
+      - build
+      - test:
+          requires: [build]
+      - scan:
+          requires: [test]
