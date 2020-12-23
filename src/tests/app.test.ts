@@ -12,7 +12,7 @@ describe("Jest Tests", () => {
 });
 
 // describe("GET /", () => {
-//   xit("respond with json", (done) => {
+//   xit("respond with json", (done) => { //xit or it?
 //     // request(app)
 //     request("localhost:666")
 //       .get("/")
@@ -21,4 +21,12 @@ describe("Jest Tests", () => {
 //       .expect({ message: "Hello world!" })
 //       .expect(200, done);
 //   });
+// });
+
+// it('/ (GET)', () => {
+//   return request(app.getHttpServer())
+//     .get('/')
+//     .expect(200)
+//     .expect('Hello World!');
+// });
 // });

@@ -1,4 +1,4 @@
-import { feeds } from "../constants/feeds";
+//import { feeds } from "../constants/feeds";
 import { Publisher } from "../types/Publisher";
 import { Post } from "../types/Post";
 const getPostsFromUrl = require("./getPostsFromUrl");
