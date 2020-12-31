@@ -71,34 +71,12 @@ const rssFetch = async () => {
                     // Add the tag to DB or add the posts id if it already exists
                     tags[tag.toLowerCase()] = tags[tag.toLowerCase()] || [];
                     tags[tag.toLowerCase()].push(postId);
-                    //console.log("tags[tag]: " + tags[tag.toLowerCase()]);
-                    // tagModel.addOrUpdateTag(
-                    //   tag.toLowerCase(),
-                    //   postId,
-                    //   (err: Error, data: any) => {
-                    //     if (err) {
-                    //       console.log(
-                    //         "An error occured while adding / updating tag in DB",
-                    //         err
-                    //       );
-                    //     } else {
-                    //       //console.log("Tag stored / updated in DB: ");
-                    //       //console.log(data);
-                    //     }
-                    //   }
-                    // );
                   });
                   console.log("TYPE: ");
                   console.log(typeof tags);
                   tagModel.addManyTags(tags, postId, () => {
                     console.log("MADE IT BACK TO RSS FETCH FILE");
                   });
-                  // console.log(tags);
-                  // // All the tags are in tags[][], now add them to db
-                  // tags.map((tag: any) => {
-                  //   console.log("%%%%%%%%%%%%");
-                  //   console.log(`-Tag: ${tag}`);
-                  // });
                 }
               });
             } else {

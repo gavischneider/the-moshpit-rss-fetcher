@@ -73,18 +73,6 @@ module.exports.addManyTags = (
   postId: any,
   callback: Function
 ) => {
-  // Object.keys(arrayOfTags).map((key: any) => {
-  //   console.log("----> Tag: ");
-  //   console.log(key);
-  //   console.log(arrayOfTags[key]);
-
-  //   tagModel.addOrUpdateTag(key, postId, (err: Error, res: any) => {
-  //     if (err) {
-  //       console.log("BIG FREAKING ERROR");
-  //     }
-  //   });
-  // });
-
   Object.keys(arrayOfTags).forEach((tag: any) => {
     console.log("----> Tag: ");
     console.log(tag);
