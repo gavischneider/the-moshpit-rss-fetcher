@@ -41,7 +41,7 @@ module.exports.addPost = (newPost: Post, callback: Function) => {
 
 module.exports.searchForPost = (postId: string, callback: Function) => {
   postModel.findOne({ id: postId }).exec((err: Error, result: any) => {
-    console.log(`RESULT: ${result}`);
+    //console.log(`RESULT: ${result}`);
     if (result) {
       // The post already exists
       callback(null, true);

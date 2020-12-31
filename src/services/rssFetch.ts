@@ -1,4 +1,4 @@
-//import { feeds } from "../constants/feeds";
+const feeds: Array<Publisher> = require("../constants/feeds").feeds;
 import { Publisher } from "../types/Publisher";
 import { Post } from "../types/Post";
 const getPostsFromUrl = require("./getPostsFromUrl");
@@ -7,7 +7,9 @@ const getImgFromHTML = require("./getImgFromHtml");
 const postModel = require("../models/post");
 const tagModel = require("../models/tag");
 
-const rssFetch = (feeds: Publisher[]) => {
+let tags: any[] = [];
+const rssFetch = async () => {
+  //feeds: Publisher[]
   // For each feed:
   feeds.map((feed: Publisher) => {
     // Get the posts from the feed url
@@ -60,29 +62,43 @@ const rssFetch = (feeds: Publisher[]) => {
                   // );
                 } else {
                   console.log("Post stored in DB: ");
-                  console.log(data); // Check what this is and update map below
+                  console.log(data);
 
                   // Post has been stored, now we need to store its tags
-                  const postId = data._id; // Update!!!!!!
+                  const postId = data._id;
                   // For each tag:
                   data.category.map((tag: any) => {
                     // Add the tag to DB or add the posts id if it already exists
-                    tagModel.addOrUpdateTag(
-                      tag,
-                      postId,
-                      (err: Error, data: any) => {
-                        if (err) {
-                          console.log(
-                            "An error occured while adding / updating tag in DB",
-                            err
-                          );
-                        } else {
-                          console.log("Tag stored / updated in DB: ");
-                          console.log(data);
-                        }
-                      }
-                    );
+                    tags[tag.toLowerCase()] = tags[tag.toLowerCase()] || [];
+                    tags[tag.toLowerCase()].push(postId);
+                    //console.log("tags[tag]: " + tags[tag.toLowerCase()]);
+                    // tagModel.addOrUpdateTag(
+                    //   tag.toLowerCase(),
+                    //   postId,
+                    //   (err: Error, data: any) => {
+                    //     if (err) {
+                    //       console.log(
+                    //         "An error occured while adding / updating tag in DB",
+                    //         err
+                    //       );
+                    //     } else {
+                    //       //console.log("Tag stored / updated in DB: ");
+                    //       //console.log(data);
+                    //     }
+                    //   }
+                    // );
                   });
+                  console.log("TYPE: ");
+                  console.log(typeof tags);
+                  tagModel.addManyTags(tags, postId, () => {
+                    console.log("MADE IT BACK TO RSS FETCH FILE");
+                  });
+                  // console.log(tags);
+                  // // All the tags are in tags[][], now add them to db
+                  // tags.map((tag: any) => {
+                  //   console.log("%%%%%%%%%%%%");
+                  //   console.log(`-Tag: ${tag}`);
+                  // });
                 }
               });
             } else {
@@ -93,6 +109,7 @@ const rssFetch = (feeds: Publisher[]) => {
       }
     });
   });
+  return tags;
 };
 
 module.exports = rssFetch;

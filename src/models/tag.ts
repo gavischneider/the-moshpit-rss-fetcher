@@ -39,7 +39,9 @@ module.exports.addOrUpdateTag = (
   const tagTitle: string = tagName;
   const newPostId: ObjectId = postId;
 
+  console.log(`TAG_TITLE: ${tagTitle}`);
   tagModel.findOne({ title: tagTitle }).exec((err: Error, result: any) => {
+    console.log(`RESULT: ${result}`);
     if (result) {
       // The tag exists, add post id to it
       result.postIds.push(newPostId);
@@ -58,10 +60,50 @@ module.exports.addOrUpdateTag = (
           console.log("error occured while creating new tag", err);
           callback(err);
         } else {
-          console.log(data);
+          //console.log(data);
           callback(null, result);
         }
       });
     }
   });
+};
+
+module.exports.addManyTags = (
+  arrayOfTags: any[],
+  postId: any,
+  callback: Function
+) => {
+  // Object.keys(arrayOfTags).map((key: any) => {
+  //   console.log("----> Tag: ");
+  //   console.log(key);
+  //   console.log(arrayOfTags[key]);
+
+  //   tagModel.addOrUpdateTag(key, postId, (err: Error, res: any) => {
+  //     if (err) {
+  //       console.log("BIG FREAKING ERROR");
+  //     }
+  //   });
+  // });
+
+  Object.keys(arrayOfTags).forEach((tag: any) => {
+    console.log("----> Tag: ");
+    console.log(tag);
+    console.log(arrayOfTags[tag]);
+    tagModel.update(
+      { title: tag },
+      //{ $push: { postIds: arrayOfTags[tag] } },
+
+      { $addToSet: { postIds: { $each: arrayOfTags[tag] } } },
+
+      { upsert: true },
+      (err: Error, res: any) => {
+        if (err) {
+          console.log("Error while inserting many / upserting");
+          console.log(err);
+        }
+      }
+    );
+  });
+
+  callback();
 };

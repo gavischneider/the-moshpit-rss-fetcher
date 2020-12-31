@@ -45,18 +45,21 @@ mongoose
   3. Once every hour or two call rssFetch
    */
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-  loadFeeds((err: Error, data: any) => {
-    if (err) {
-      console.log(`Problem loading feeds: ${err}`);
-    } else {
-      console.log(data);
-      console.log(`Type of feeds: ${typeof data}`);
-      //res.send(feeds);
+app.get("/", async (req: Request, res: Response, next: NextFunction) => {
+  // loadFeeds((err: Error, data: any) => {
+  //   if (err) {
+  //     console.log(`Problem loading feeds: ${err}`);
+  //   } else {
+  //     console.log(data);
+  //     console.log(`Type of feeds: ${typeof data}`);
+  //     //res.send(feeds);
 
-      rssFetch(data);
-    }
-  });
+  //     rssFetch(data);
+  //   }
+  // });
+  let tags = await rssFetch();
+  console.log(tags);
+  res.send(tags);
 });
 
 // Add route to add feeds to db, then call updateFeeds
