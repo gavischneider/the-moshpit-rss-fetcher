@@ -27,8 +27,6 @@ app.use(
   })
 );
 
-const port = process.env.PORT || 666;
-
 const connectionString = process.env.MONGO_CONNECTION_STRING;
 
 mongoose
@@ -62,12 +60,15 @@ app.get("/", async (req: Request, res: Response, next: NextFunction) => {
   res.send(tags);
 });
 
+// Route for testing
+app.get("/ping", async (req: Request, res: Response, next: NextFunction) => {
+  res.send({ data: "Pong!" });
+});
+
 // Add route to add feeds to db, then call updateFeeds
 app.post("/addfeed", (req: Request, res: Response, next: NextFunction) => {
   //...call addNewPublisher()
   // Get the new feeds posts and add to db
 });
-
-app.listen(port, () => console.log(`Server running on port ${port}`));
 
 module.exports = app;

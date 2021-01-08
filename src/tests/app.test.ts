@@ -2,6 +2,9 @@ export {};
 
 import "jest";
 import request from "supertest";
+const app = require("../app");
+
+jest.useFakeTimers();
 
 //const app = require("../app");
 
@@ -30,3 +33,12 @@ describe("Jest Tests", () => {
 //     .expect('Hello World!');
 // });
 // });
+
+describe("Test ping route", () => {
+  it("Request to '/ping' route should return Pong!", async () => {
+    const result = await request(app).get("/ping").send();
+
+    expect(result.status).toBe(200);
+    expect(result.body.data).toBe("Pong!");
+  });
+});
