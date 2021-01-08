@@ -54,6 +54,7 @@
     "jest-cli": "^26.6.3",
     "superagent": "^6.1.0",
     "supertest": "^6.0.1",
-    "ts-jest": "^26.4.4"
+    "ts-jest": "^26.4.4",
+    "webpack": "^5.12.1"
   }
 }

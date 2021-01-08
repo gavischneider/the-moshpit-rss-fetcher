@@ -3,6 +3,8 @@ import { Publisher } from "../types/Publisher";
 import { Post } from "../types/Post";
 const getPostsFromUrl = require("./getPostsFromUrl");
 const getImgFromHTML = require("./getImgFromHtml");
+const getImgFromHTML2 = require("./getImgFromHtml2");
+const getImgFromHTML3 = require("./getImgFromHtml3");
 
 const postModel = require("../models/post");
 const tagModel = require("../models/tag");
@@ -30,6 +32,7 @@ const rssFetch = async () => {
                 title: post.title,
                 id: post.id,
                 description: post.description,
+                content: post.content,
                 url: post.url,
                 created: post.created,
                 author: post.author,
@@ -48,6 +51,20 @@ const rssFetch = async () => {
                 );
               } else {
                 newPost.image = getImgFromHTML(newPost.description);
+
+                if (
+                  !newPost.image.endsWith(".jpg") &&
+                  !newPost.image.endsWith(".png")
+                ) {
+                  newPost.image = getImgFromHTML2(newPost.content);
+                }
+
+                if (
+                  !newPost.image.endsWith(".jpg") &&
+                  !newPost.image.endsWith(".png")
+                ) {
+                  newPost.image = getImgFromHTML3(newPost.content);
+                }
                 console.log(
                   "+++++++++++ The image we found is: " + newPost.image
                 );
@@ -68,9 +85,10 @@ const rssFetch = async () => {
                   const postId = data._id;
                   // For each tag:
                   data.category.map((tag: any) => {
+                    let newTag = tag.toLowerCase();
                     // Add the tag to DB or add the posts id if it already exists
-                    tags[tag.toLowerCase()] = tags[tag.toLowerCase()] || [];
-                    tags[tag.toLowerCase()].push(postId);
+                    tags[newTag] = tags[newTag] || [];
+                    tags[newTag].concat([postId]);
                   });
                   console.log("TYPE: ");
                   console.log(typeof tags);
