@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+  target: "node",
   entry: "/src/main.ts",
   resolve: {
     extensions: [".js", ".ts"],
@@ -20,4 +21,5 @@ module.exports = {
       },
     ],
   },
+  externals: ["canvas"],
 };
