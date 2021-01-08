@@ -15,13 +15,33 @@ export const feeds = [
     image: "https://www.google.com/s2/favicons?domain=metalinjection.net",
   },
   {
-    name: "Metal Underground",
-    url: "http://feeds.feedburner.com/metalunderground",
-    image: "https://www.google.com/s2/favicons?domain=metalunderground.com",
+    name: "BraveWords",
+    url: "https://bravewords.com/rss/news.xml",
+    image: "https://www.google.com/s2/favicons?domain=bravewords.com",
   },
   {
-    name: "Decibel Magazine",
-    url: "https://www.decibelmagazine.com/feed/",
-    image: "https://www.google.com/s2/favicons?domain=decibelmagazine.com",
+    name: "Louder",
+    url: "http://www.loudersound.com/feeds/all",
+    image: "https://www.google.com/s2/favicons?domain=loudersound.com",
+  },
+  {
+    name: "Terrorizer",
+    url: "http://www.terrorizer.com/feed/",
+    image: "https://www.google.com/s2/favicons?domain=terrorizer.com",
+  },
+  {
+    name: "Invisible Oranges",
+    url: "invisibleoranges.com/feed/",
+    image: "https://www.google.com/s2/favicons?domain=invisibleoranges.com",
+  },
+  {
+    name: "Angry Metal Guy",
+    url: "https://www.angrymetalguy.com/feed/",
+    image: "https://www.google.com/s2/favicons?domain=angrymetalguy.com",
+  },
+  {
+    name: "No Clean Singing",
+    url: "https://www.nocleansinging.com/feed/",
+    image: "https://www.google.com/s2/favicons?domain=nocleansinging.com",
   },
 ];
