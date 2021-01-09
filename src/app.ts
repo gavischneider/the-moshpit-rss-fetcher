@@ -26,7 +26,7 @@ app.use(
     credentials: true, // Allow seesion cookie from browser to come through
   })
 );
-///
+
 const connectionString = process.env.MONGO_CONNECTION_STRING;
 
 mongoose
