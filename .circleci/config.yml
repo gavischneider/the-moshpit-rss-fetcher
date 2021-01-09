@@ -28,6 +28,8 @@ jobs:
       - run:
           name: Test App
           command: |
+            sudo chown -R $USER:$USER /home
+            sudo chown -R $USER:$USER /home/circleci
             sudo chown -R $USER:$USER /home/circleci/project
             whoami
             pwd
