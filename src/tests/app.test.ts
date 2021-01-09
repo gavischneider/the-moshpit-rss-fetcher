@@ -29,7 +29,7 @@ describe("Test home route", () => {
 // Test the '/feeds' route
 describe("Test feeds route", () => {
   it("Request to '/feeds' should return json", async () => {
-    request(app)
+    const result = await request(app)
       .get("/feeds")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
