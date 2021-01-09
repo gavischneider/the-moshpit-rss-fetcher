@@ -31,10 +31,13 @@ jobs:
             sudo chown -R $USER:$USER /home
             sudo chown -R $USER:$USER /home/circleci
             sudo chown -R $USER:$USER /home/circleci/project
+
+            mv /home/circleci/project/src/ci/.env /home/circleci/project
+
             whoami
             pwd
             ls
-            sudo touch .env 
+
             echo "export MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" > .env
             ls
             echo "--- .env file ---"
