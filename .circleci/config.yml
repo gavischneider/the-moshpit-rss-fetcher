@@ -21,8 +21,12 @@ jobs:
       - run:
           name: Test App
           command: |
+            echo "BASH ENV BEFORE"
+            echo $BASH_ENV
             echo "export MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" >> $BASH_ENV
             echo "export process.env.MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" >> $BASH_ENV
+            echo "BASH ENV AFTER"
+            echo $BASH_ENV
             sudo npm install
             sudo npm install jest jest-cli ts-jest supertest typescript --global
             sudo npm run test
