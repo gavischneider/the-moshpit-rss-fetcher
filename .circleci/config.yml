@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Build App Code
           command: |
-            npm i
+            npm install
             npm run build
 
   test:
@@ -21,8 +21,11 @@ jobs:
       - run:
           name: Test App
           command: |
-            npm i
-            npm install -g jest jest-cli ts-jest supertest --global
+            npm install
+            npm install jest jest-cli ts-jest supertest typescript --global
+            sudo chown -R $USER ~/.npm
+            sudo chown -R $USER /usr/lib/node_modules
+            sudo chown -R $USER /usr/local/lib/node_modules
             sudo npm run test
 
   scan:
@@ -33,7 +36,7 @@ jobs:
       - run:
           name: Audit Dependencies
           command: |
-            npm i
+            npm install
             npm audit fix --audit-level=critical --force
 
 # workflows:
