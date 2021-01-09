@@ -32,7 +32,7 @@ jobs:
             sudo chown -R $USER:$USER /home/circleci
             sudo chown -R $USER:$USER /home/circleci/project
 
-            mv /home/circleci/project/src/ci/.env /home/circleci/project
+            mv /home/circleci/project/ci/.env /home/circleci/project
 
             whoami
             pwd
