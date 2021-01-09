@@ -26,6 +26,9 @@ jobs:
     steps:
       - checkout
       - run:
+          environment:
+            MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
+            process.env.MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
           name: Test App
           command: |
             sudo chown -R $USER:$USER /home
@@ -41,7 +44,7 @@ jobs:
             mv /home/circleci/project/src/ci/.env /home/circleci/project
 
             echo "After"
-            ls /home/circleci/project/
+            ls -a /home/circleci/project/
 
             whoami
             pwd
@@ -58,9 +61,6 @@ jobs:
             sudo npm install
             sudo npm install jest jest-cli ts-jest supertest typescript --global
             sudo npm run test
-          environment:
-            MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
-            process.env.MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
 
   scan:
     docker:
