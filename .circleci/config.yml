@@ -31,24 +31,11 @@ jobs:
             echo "ENV VARIABLE"
             echo $MONGO_CONNECTION_STRING
 
-            sudo chown -R $USER:$USER /home
-            sudo chown -R $USER:$USER /home/circleci
-            sudo chown -R $USER:$USER /home/circleci/project
-
-            ls /home/
-            ls /home/circleci/
-            ls /home/circleci/project/
-            ls /home/circleci/project/src/
-            ls /home/circleci/project/src/ci/
             mv /home/circleci/project/src/ci/env.txt /home/circleci/project/src/ci/.env
             mv /home/circleci/project/src/ci/.env /home/circleci/project
 
             echo "After"
             ls -a /home/circleci/project/
-
-            whoami
-            pwd
-            ls
 
             echo MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING > ".env"
             ls
