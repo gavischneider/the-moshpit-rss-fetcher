@@ -28,8 +28,8 @@ jobs:
       - run:
           name: Test App
           command: |
-            who
-            sudo make install
+
+            echo $USER
             pwd
             ls
             sudo touch .env 
