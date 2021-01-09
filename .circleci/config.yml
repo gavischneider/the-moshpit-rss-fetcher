@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Build App Code
           command: |
-            cd project
+
             ls
             sudo touch .env 
             echo "export MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" > .env
