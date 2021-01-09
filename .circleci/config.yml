@@ -26,8 +26,6 @@ jobs:
     steps:
       - checkout
       - run:
-          environment:
-            MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
           name: Test App
           command: |
             echo "ENV VARIABLE"
@@ -60,6 +58,9 @@ jobs:
             sudo npm install
             sudo npm install jest jest-cli ts-jest supertest typescript --global
             sudo npm run test
+
+    #           environment:
+    # MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
 
   scan:
     docker:
