@@ -5,23 +5,31 @@ jobs:
   build:
     docker:
       - image: circleci/node:13.8.0
+    working_directory: ~/project
     steps:
       - checkout
       - run:
           name: Build App Code
           command: |
+            cd project
+            ls
+            sudo touch .env 
+            echo "export MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" > .env
+            ls
             npm install
             npm run build
 
   test:
     docker:
       - image: circleci/node:13.8.0
+    working_directory: ~/project
     steps:
       - checkout
       - run:
           name: Test App
           command: |
 
+            cd project
             ls
             sudo touch .env 
             echo "export MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" > .env
