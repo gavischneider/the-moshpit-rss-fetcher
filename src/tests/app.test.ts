@@ -18,25 +18,23 @@ describe("Jest Tests", () => {
 
 // Next test that the API endpoints are being tested correctly
 describe("Test home route", () => {
-  it("Request to '/' route should return Home Route!", async (done) => {
+  it("Request to '/' route should return Home Route!", async () => {
     const result = await request(app).get("/").send();
 
     expect(result.status).toBe(200);
     expect(result.body.data).toBe("Home Route!");
-    done();
-  });
+  }, 30000);
 });
 
 // Test the '/feeds' route
 describe("Test feeds route", () => {
-  it("Request to '/feeds' should return json", async (done) => {
+  it("Request to '/feeds' should return json", async () => {
     request(app)
       .get("/feeds")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(200);
-    done();
-  });
+  }, 30000);
 });
 
 // afterAll(() => {
@@ -48,6 +46,6 @@ describe("Test feeds route", () => {
 //     );
 // });
 
-afterAll(async (done) => {
+afterAll(async () => {
   await mongoose.disconnect();
 });
