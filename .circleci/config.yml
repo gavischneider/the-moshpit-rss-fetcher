@@ -40,11 +40,15 @@ jobs:
             mv /home/circleci/project/src/ci/env.txt /home/circleci/project/src/ci/.env
             mv /home/circleci/project/src/ci/.env /home/circleci/project
 
+            echo "After"
+            ls /home/circleci/project/
+
             whoami
             pwd
             ls
+            echo ENVIROMENT=production > "backend/.env"
 
-            echo "export MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" > .env
+            echo MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING > ".env"
             ls
             echo "--- .env file ---"
             sudo cat .env
