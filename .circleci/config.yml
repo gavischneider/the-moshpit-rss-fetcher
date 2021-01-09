@@ -46,7 +46,6 @@ jobs:
             whoami
             pwd
             ls
-            echo ENVIROMENT=production > "backend/.env"
 
             echo MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING > ".env"
             ls
