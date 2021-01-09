@@ -44,25 +44,26 @@ mongoose
    */
 
 app.get("/", async (req: Request, res: Response, next: NextFunction) => {
-  // loadFeeds((err: Error, data: any) => {
-  //   if (err) {
-  //     console.log(`Problem loading feeds: ${err}`);
-  //   } else {
-  //     console.log(data);
-  //     console.log(`Type of feeds: ${typeof data}`);
-  //     //res.send(feeds);
+  res.send({ data: "Home Route!" });
 
-  //     rssFetch(data);
-  //   }
-  // });
-  let tags = await rssFetch();
-  console.log(tags);
-  res.send(tags);
+  //let tags = await rssFetch();
+  //console.log(tags);
+  //res.send(tags);
 });
 
-// Route for testing
-app.get("/ping", async (req: Request, res: Response, next: NextFunction) => {
-  res.send({ data: "Pong!" });
+// Get all feeds
+app.get("/feeds", async (req: Request, res: Response, next: NextFunction) => {
+  loadFeeds((err: Error, data: any) => {
+    if (err) {
+      console.log(`Problem loading feeds: ${err}`);
+    } else {
+      console.log(data);
+      //console.log(`Type of feeds: ${typeof data}`);
+      res.send({ data: data });
+
+      //rssFetch(data);
+    }
+  });
 });
 
 // Add route to add feeds to db, then call updateFeeds

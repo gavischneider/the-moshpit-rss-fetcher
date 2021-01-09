@@ -2,43 +2,52 @@ export {};
 
 import "jest";
 import request from "supertest";
+const mongoose = require("mongoose");
 const app = require("../app");
 
-jest.useFakeTimers();
+// beforeEach(() => {
+//   jest.useFakeTimers();
+// });
 
-//const app = require("../app");
-
+// First verify that the testing capability works correctly
 describe("Jest Tests", () => {
   test("Verify Tests Work", () => {
     expect(true).toBeTruthy();
   });
 });
 
-// describe("GET /", () => {
-//   xit("respond with json", (done) => { //xit or it?
-//     // request(app)
-//     request("localhost:666")
-//       .get("/")
-//       .set("Accept", "application/json")
-//       .expect("Content-Type", /json/)
-//       .expect({ message: "Hello world!" })
-//       .expect(200, done);
-//   });
-// });
-
-// it('/ (GET)', () => {
-//   return request(app.getHttpServer())
-//     .get('/')
-//     .expect(200)
-//     .expect('Hello World!');
-// });
-// });
-
-describe("Test ping route", () => {
-  it("Request to '/ping' route should return Pong!", async () => {
-    const result = await request(app).get("/ping").send();
+// Next test that the API endpoints are being tested correctly
+describe("Test home route", () => {
+  it("Request to '/' route should return Home Route!", async (done) => {
+    const result = await request(app).get("/").send();
 
     expect(result.status).toBe(200);
-    expect(result.body.data).toBe("Pong!");
+    expect(result.body.data).toBe("Home Route!");
+    done();
   });
+});
+
+// Test the '/feeds' route
+describe("Test feeds route", () => {
+  it("Request to '/feeds' should return json", async (done) => {
+    request(app)
+      .get("/feeds")
+      .set("Accept", "application/json")
+      .expect("Content-Type", /json/)
+      .expect(200);
+    done();
+  });
+});
+
+// afterAll(() => {
+//   mongoose.connection
+//     .close()
+//     .then(() => console.log("MongoDB connection closed after tests"))
+//     .catch((err: Error) =>
+//       console.log(`Error closing Mongo connection after tests, ${err}`)
+//     );
+// });
+
+afterAll(async (done) => {
+  await mongoose.disconnect();
 });

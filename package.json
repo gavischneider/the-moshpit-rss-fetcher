@@ -4,7 +4,7 @@
   "description": "Content Generator Service for The Moshpit",
   "main": "app.js",
   "scripts": {
-    "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
+    "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default --forceExit",
     "test:ci": "npx jest --ci --runInBand --silent --colors --coverage",
     "dev": "nodemon src/main.ts",
     "build": "webpack --mode production"
