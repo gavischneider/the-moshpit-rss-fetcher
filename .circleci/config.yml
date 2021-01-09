@@ -24,7 +24,8 @@ jobs:
 
             ls
             sudo touch .env 
-            echo "export MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" >> .env
+            echo "export MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" > .env
+            ls
             echo "--- .env file ---"
             sudo cat .env
 
