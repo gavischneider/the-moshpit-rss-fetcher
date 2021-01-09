@@ -28,6 +28,7 @@ jobs:
       - run:
           name: Test App
           command: |
+            su
             sudo make install
             pwd
             ls
