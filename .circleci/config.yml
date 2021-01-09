@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Test App
           command: |
-
+            sudo chmod -R a+rwx /home/circleci/project
             echo $USER
             pwd
             ls
