@@ -37,6 +37,7 @@ jobs:
             ls /home/circleci/project/
             ls /home/circleci/project/src/
             ls /home/circleci/project/src/ci/
+            mv /home/circleci/project/src/ci/env.txt /home/circleci/project/src/ci/.env
             mv /home/circleci/project/src/ci/.env /home/circleci/project
 
             whoami
