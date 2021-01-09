@@ -27,10 +27,12 @@ jobs:
       - checkout
       - run:
           environment:
-            MONGO_CONNECTION_STRING: $MONGO_CONNECTION_STRING
-            process.env.MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
+            MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
           name: Test App
           command: |
+            echo "ENV VARIABLE"
+            echo ${MONGO_CONNECTION_STRING}
+
             sudo chown -R $USER:$USER /home
             sudo chown -R $USER:$USER /home/circleci
             sudo chown -R $USER:$USER /home/circleci/project
