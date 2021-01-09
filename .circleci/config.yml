@@ -16,17 +16,16 @@ jobs:
   test:
     docker:
       - image: circleci/node:13.8.
-        environment:
-          MONGO_CONNECTION_STRING: $MONGO_CONNECTION_STRING
     steps:
       - checkout
       - run:
           name: Test App
           command: |
-
             sudo npm install
             sudo npm install jest jest-cli ts-jest supertest typescript --global
             sudo npm run test
+          environment:
+            MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
 
   scan:
     docker:
