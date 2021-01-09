@@ -23,7 +23,7 @@ jobs:
           command: |
             npm i
             npm install jest jest-cli ts-jest supertest --global
-            npm run test
+            sudo npm run test
 
   scan:
     docker:
