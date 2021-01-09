@@ -22,11 +22,13 @@ jobs:
           name: Test App
           command: |
             echo "export MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" >> $BASH_ENV
+            echo "export process.env.MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING" >> $BASH_ENV
             sudo npm install
             sudo npm install jest jest-cli ts-jest supertest typescript --global
             sudo npm run test
           environment:
             MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
+            process.env.MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
 
   scan:
     docker:
@@ -44,11 +46,12 @@ jobs:
 #     jobs:
 #       - node/test
 
+# - build
+# requires: [build]
+
 workflows:
   default:
     jobs:
-      - build
-      - test:
-          requires: [build]
+      - test
       - scan:
           requires: [test]
