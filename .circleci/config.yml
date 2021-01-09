@@ -22,7 +22,7 @@ jobs:
           name: Test App
           command: |
             npm i
-            npm install jest jest-cli ts-jest supertest --global
+            npm install -g jest jest-cli ts-jest supertest --global
             sudo npm run test
 
   scan:
