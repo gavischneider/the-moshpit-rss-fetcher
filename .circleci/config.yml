@@ -44,7 +44,9 @@ jobs:
 
             sudo npm install
             sudo npm install jest jest-cli ts-jest supertest typescript --global
+            npm run dev
             sudo npm run test
+            killall node
 
     #           environment:
     # MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
