@@ -28,26 +28,14 @@ jobs:
       - run:
           name: Test App
           command: |
-            echo "ENV VARIABLE"
-            echo $MONGO_CONNECTION_STRING
-
             mv /home/circleci/project/src/ci/env.txt /home/circleci/project/src/ci/.env
             mv /home/circleci/project/src/ci/.env /home/circleci/project
 
-            echo "After"
-            ls -a /home/circleci/project/
-
             echo MONGO_CONNECTION_STRING=$MONGO_CONNECTION_STRING > ".env"
-            ls
-            echo "--- .env file ---"
-            sudo cat .env
 
             sudo npm install
             sudo npm install jest jest-cli ts-jest supertest typescript --global
             sudo npm run test
-
-    #           environment:
-    # MONGO_CONNECTION_STRING: ${MONGO_CONNECTION_STRING}
 
   scan:
     docker:
@@ -59,11 +47,6 @@ jobs:
           command: |
             npm install
             npm audit fix --audit-level=critical --force
-
-# workflows:
-#   node-tests:
-#     jobs:
-#       - node/test
 
 # - build
 # requires: [build]

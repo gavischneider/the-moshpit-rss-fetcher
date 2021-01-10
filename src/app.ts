@@ -6,6 +6,8 @@ import express, {
   Router,
 } from "express";
 
+const publisherModel = require("./models/publisher");
+
 const rssFetch: Function = require("./services/rssFetch");
 const checkForNewFeeds: Function = require("./services/checkForNewFeeds");
 const addNewPublisher: Function = require("./services/addNewPublisher");
@@ -68,8 +70,17 @@ app.get("/feeds", async (req: Request, res: Response, next: NextFunction) => {
 
 // Add route to add feeds to db, then call updateFeeds
 app.post("/addfeed", (req: Request, res: Response, next: NextFunction) => {
-  //...call addNewPublisher()
-  // Get the new feeds posts and add to db
+  const name = req.body.name;
+  const url = req.body.url;
+  const image = req.body.imagel;
+
+  publisherModel.addPublisher(name, url, image, (err: Error, data: any) => {
+    if (err) {
+      console.log(`Error adding new publisher, ${err}`);
+    } else {
+      console.log(data);
+    }
+  });
 });
 
 module.exports = app;

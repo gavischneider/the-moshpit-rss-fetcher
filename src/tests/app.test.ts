@@ -37,15 +37,6 @@ describe("Test feeds route", () => {
   }, 30000);
 });
 
-// afterAll(() => {
-//   mongoose.connection
-//     .close()
-//     .then(() => console.log("MongoDB connection closed after tests"))
-//     .catch((err: Error) =>
-//       console.log(`Error closing Mongo connection after tests, ${err}`)
-//     );
-// });
-
 afterAll(async () => {
   await mongoose.disconnect();
 });
