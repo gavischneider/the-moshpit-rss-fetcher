@@ -53,15 +53,15 @@ const rssFetch = async () => {
                 newPost.image = getImgFromHTML(newPost.description);
 
                 if (
-                  !newPost.image.endsWith(".jpg") &&
-                  !newPost.image.endsWith(".png")
+                  !newPost.image.includes(".jpg") &&
+                  !newPost.image.includes(".png")
                 ) {
                   newPost.image = getImgFromHTML2(newPost.content);
                 }
 
                 if (
-                  !newPost.image.endsWith(".jpg") &&
-                  !newPost.image.endsWith(".png")
+                  !newPost.image.includes(".jpg") &&
+                  !newPost.image.includes(".png")
                 ) {
                   newPost.image = getImgFromHTML3(newPost.content);
                 }
@@ -84,17 +84,17 @@ const rssFetch = async () => {
                   // Post has been stored, now we need to store its tags
                   const postId = data._id;
                   // For each tag:
-                  data.category.map((tag: any) => {
-                    let newTag = tag.toLowerCase();
-                    // Add the tag to DB or add the posts id if it already exists
-                    tags[newTag] = tags[newTag] || [];
-                    tags[newTag].concat([postId]);
-                  });
-                  console.log("TYPE: ");
-                  console.log(typeof tags);
-                  tagModel.addManyTags(tags, postId, () => {
-                    console.log("MADE IT BACK TO RSS FETCH FILE");
-                  });
+                  //data.category.map((tag: any) => {
+                  //let newTag = tag.toLowerCase();
+                  // Add the tag to DB or add the posts id if it already exists
+                  //tags[newTag] = tags[newTag] || [];
+                  //tags[newTag].concat([postId]);
+                  //});
+                  //console.log("TYPE: ");
+                  //console.log(typeof tags);
+                  //tagModel.addManyTags(tags, postId, () => {
+                  //console.log("MADE IT BACK TO RSS FETCH FILE");
+                  //});
                 }
               });
             } else {

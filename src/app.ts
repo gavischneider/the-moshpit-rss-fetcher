@@ -46,11 +46,11 @@ mongoose
    */
 
 app.get("/", async (req: Request, res: Response, next: NextFunction) => {
-  res.send({ data: "Home Route!" });
+  //res.send({ data: "Home Route!" });
 
-  //let tags = await rssFetch();
-  //console.log(tags);
-  //res.send(tags);
+  let tags = await rssFetch();
+  console.log(tags);
+  res.send(tags);
 });
 
 // Get all feeds
