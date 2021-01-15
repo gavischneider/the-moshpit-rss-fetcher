@@ -12,7 +12,10 @@ function getImgFromHTML3(content: string): any {
   let imageSrc: string | null;
   for (let i = 0; i < imagesArray.length; i++) {
     imageSrc = imagesArray[i].getAttribute("href");
-    if (imageSrc !== null && imageSrc.endsWith(".jpg")) {
+    if (
+      imageSrc !== null &&
+      (imageSrc.includes(".jpg") || imageSrc.includes(".png"))
+    ) {
       // We found the image
       return imageSrc;
     }
