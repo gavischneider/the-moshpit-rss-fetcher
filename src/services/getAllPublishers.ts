@@ -1,5 +1,3 @@
-import { resolveSoa } from "dns";
-
 export {};
 const publisherModel = require("../models/publisher");
 
@@ -15,12 +13,6 @@ const getAllPublishers = (callback: Function) => {
       callback(null, data);
     }
   });
-  // .then((data: any) => {
-  //   return data;
-  // })
-  // .catch((err: Error) => {
-  //   console.log(`Error getting all publishers, ${err}`);
-  // });
 };
 
 module.exports = getAllPublishers;

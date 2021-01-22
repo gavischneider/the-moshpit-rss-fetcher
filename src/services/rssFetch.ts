@@ -2,9 +2,9 @@
 import { Publisher } from "../types/Publisher";
 import { Post } from "../types/Post";
 const getPostsFromUrl = require("./getPostsFromUrl");
-const getImgFromHTML = require("./getImgFromHtml");
-const getImgFromHTML2 = require("./getImgFromHtml2");
-const getImgFromHTML3 = require("./getImgFromHtml3");
+//const getImgFromHTML = require("./getImgFromHtml");
+//const getImgFromHTML2 = require("./getImgFromHtml2");
+//const getImgFromHTML3 = require("./getImgFromHtml3");
 const findImg = require("./findImg");
 
 const postModel = require("../models/post");
