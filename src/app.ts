@@ -5,9 +5,11 @@ import express, {
   NextFunction,
   Router,
 } from "express";
+import { Publisher } from "./types/Publisher";
 
 const publisherModel = require("./models/publisher");
 
+const getAllPublishers: Function = require("./services/getAllPublishers");
 const rssFetch: Function = require("./services/rssFetch");
 const checkForNewFeeds: Function = require("./services/checkForNewFeeds");
 const addNewPublisher: Function = require("./services/addNewPublisher");
@@ -48,9 +50,20 @@ mongoose
 app.get("/", async (req: Request, res: Response, next: NextFunction) => {
   //res.send({ data: "Home Route!" });
 
-  let tags = await rssFetch();
-  console.log(tags);
-  res.send(tags);
+  const publishers = getAllPublishers((err: Error, data: Publisher[]) => {
+    if (err) {
+      console.log(`Error getting all publishers: ${err}`);
+    } else {
+      console.log("THESE ARE ALL THE PUBLISHERS: ");
+      console.log(data);
+      //res.send(data);
+
+      // Send all the publishers to fetchRss
+      let tags = rssFetch(data);
+      console.log(tags);
+      res.send(tags);
+    }
+  });
 });
 
 // Get all feeds

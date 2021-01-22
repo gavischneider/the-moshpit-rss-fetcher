@@ -1,4 +1,4 @@
-const feeds: Array<Publisher> = require("../constants/feeds").feeds;
+//const feeds: Array<Publisher> = require("../constants/feeds").feeds;
 import { Publisher } from "../types/Publisher";
 import { Post } from "../types/Post";
 const getPostsFromUrl = require("./getPostsFromUrl");
@@ -11,10 +11,11 @@ const postModel = require("../models/post");
 const tagModel = require("../models/tag");
 
 let tags: any[] = [];
-const rssFetch = async () => {
+const rssFetch = async (publishers: Publisher[]) => {
   //feeds: Publisher[]
   // For each feed:
-  feeds.map((feed: Publisher) => {
+  //feeds.map((feed: Publisher) => {
+  publishers.map((feed: Publisher) => {
     // Get the posts from the feed url
     getPostsFromUrl(feed.url, (err: Error, data: any) => {
       if (err) {
