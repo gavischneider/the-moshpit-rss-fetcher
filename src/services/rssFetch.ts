@@ -4,6 +4,7 @@ import { Post } from "../types/Post";
 const getPostsFromUrl = require("./getPostsFromUrl");
 const findImg = require("./findImg");
 const urlIntervene = require("./urlIntervene");
+const tagIntervene = require("./tagIntervene");
 const checkFields = require("./checkFields");
 
 const postModel = require("../models/post");
@@ -64,7 +65,13 @@ const rssFetch = async (publishers: Publisher[]) => {
                 if (special.includes(newPost.publisher)) {
                   newPost = urlIntervene(newPost);
                 }
-                // URL is ok, don't need extra action
+
+                // Check if we need to change the tags
+                const specialTags = ["From the Dust Returned"];
+                if (specialTags.includes(newPost.publisher)) {
+                  newPost = tagIntervene(newPost);
+                }
+
                 // Post is ready to be stored
                 postModel.addPost(newPost, (err: Error, data: any) => {
                   console.log(
