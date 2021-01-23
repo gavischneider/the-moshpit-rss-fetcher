@@ -67,7 +67,10 @@ const rssFetch = async (publishers: Publisher[]) => {
                 }
 
                 // Check if we need to change the tags
-                const specialTags = ["From the Dust Returned"];
+                const specialTags = [
+                  "From the Dust Returned",
+                  "Metal Bandcamp",
+                ];
                 if (specialTags.includes(newPost.publisher)) {
                   newPost = tagIntervene(newPost);
                 }

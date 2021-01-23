@@ -5,6 +5,10 @@ const tagIntervene = (newPost: any) => {
       for (let i = 0; i < newPost.category.length; i++) {
         newTags.push(newPost.category[i].term);
       }
+    case "Metal Bandcamp":
+      for (let i = 0; i < newPost.category.length; i++) {
+        newTags.push(newPost.category[i].$t);
+      }
     default:
       console.log("Default");
   }

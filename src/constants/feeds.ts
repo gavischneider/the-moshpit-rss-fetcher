@@ -81,17 +81,17 @@ export const feeds = [
   //   image:
   //     "https://pbs.twimg.com/profile_images/1057897610814545920/ehycuqEy_400x400.jpg",
   // },
-  // {
-  //   name: "Metal Bandcamp",
-  //   url: "http://feeds.metalbandcamp.com/metalbandcamp",
-  //   image: "https://f4.bcbits.com/img/0001492584_20.jpg",
-  // },
   {
-    name: "From the Dust Returned",
-    url: "http://autothrall.blogspot.com/feeds/posts/default",
-    image:
-      "https://1.bp.blogspot.com/-u8g4_LVleFc/X6tDW2FshsI/AAAAAAAASOs/29E-Whw8JTQuv13IC6o-_v1ak-9LSTipgCK4BGAYYCw/s400/wolf-of-ansbach.jpg",
+    name: "Metal Bandcamp",
+    url: "http://feeds.metalbandcamp.com/metalbandcamp",
+    image: "https://f4.bcbits.com/img/0001492584_20.jpg",
   },
+  // {
+  //   name: "From the Dust Returned",
+  //   url: "http://autothrall.blogspot.com/feeds/posts/default",
+  //   image:
+  //     "https://1.bp.blogspot.com/-u8g4_LVleFc/X6tDW2FshsI/AAAAAAAASOs/29E-Whw8JTQuv13IC6o-_v1ak-9LSTipgCK4BGAYYCw/s400/wolf-of-ansbach.jpg",
+  // },
   // {
   //   name: "Tape Wyrm",
   //   url: "https://tapewyrmmetal.com/feed",
