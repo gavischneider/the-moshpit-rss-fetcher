@@ -11,7 +11,6 @@ const publisherModel = require("./models/publisher");
 
 const getAllPublishers: Function = require("./services/getAllPublishers");
 const rssFetch: Function = require("./services/rssFetch");
-const checkForNewFeeds: Function = require("./services/checkForNewFeeds");
 const addNewPublisher: Function = require("./services/addNewPublisher");
 const loadFeeds: Function = require("./services/loadFeeds");
 

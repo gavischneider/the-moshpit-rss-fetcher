@@ -5,7 +5,14 @@ const urlIntervene = (newPost: any) => {
     }
   });
 
-  return newUrl;
+  // console.log("<<<<<<<>>>>>> HERES THE URL WE GOT:");
+  // console.log(newUrl);
+  // console.log("<<<<<<<>>>>>> HERES THE URL[0] WE GOT:");
+  // console.log(newUrl[0]);
+  // console.log("<<<<<<<>>>>>> HERES THE URL[0].href WE GOT:");
+  // console.log(newUrl[0].href);
+  newPost.url = newUrl[0].href;
+  return newPost;
 };
 
 module.exports = urlIntervene;
