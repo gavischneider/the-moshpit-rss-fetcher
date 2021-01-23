@@ -1,4 +1,4 @@
-import { Post } from "../types/Post";
+import { Post } from "../../types/Post";
 
 const getImgFromHTML = require("./getImgFromHtml");
 const getImgFromHTML2 = require("./getImgFromHtml2");

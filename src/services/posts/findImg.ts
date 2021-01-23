@@ -1,5 +1,3 @@
-import { Post } from "../types/Post";
-
 export {};
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;

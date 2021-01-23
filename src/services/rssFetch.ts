@@ -1,11 +1,11 @@
-const feeds: Array<Publisher> = require("../constants/feeds").feeds;
+//const feeds: Array<Publisher> = require("../constants/feeds").feeds;
 import { Publisher } from "../types/Publisher";
 import { Post } from "../types/Post";
 const getPostsFromUrl = require("./getPostsFromUrl");
-const findImg = require("./findImg");
-const urlIntervene = require("./urlIntervene");
-const tagIntervene = require("./tagIntervene");
-const checkFields = require("./checkFields");
+const findImg = require("./posts/findImg");
+const urlIntervene = require("./posts/urlIntervene");
+const tagIntervene = require("./posts/tagIntervene");
+const checkFields = require("./posts/checkFields");
 
 const postModel = require("../models/post");
 const tagModel = require("../models/tag");
@@ -13,8 +13,8 @@ const tagModel = require("../models/tag");
 let tags: any[] = [];
 const rssFetch = async (publishers: Publisher[]) => {
   // For each feed:
-  feeds.map((feed: Publisher) => {
-    //publishers.map((feed: Publisher) => {
+  //feeds.map((feed: Publisher) => {
+  publishers.map((feed: Publisher) => {
     // Get the posts from the feed url
     getPostsFromUrl(feed.url, (err: Error, data: any) => {
       if (err) {
@@ -53,10 +53,6 @@ const rssFetch = async (publishers: Publisher[]) => {
                 // We have the post data, now we need to check where the image is
                 newPost = findImg(newPost);
 
-                console.log(
-                  "1. -------------------> Made it back after searching for image"
-                );
-
                 // Check if we need to change the URL
                 const special = [
                   "From the Dust Returned",
@@ -79,9 +75,6 @@ const rssFetch = async (publishers: Publisher[]) => {
 
                 // Post is ready to be stored
                 postModel.addPost(newPost, (err: Error, data: any) => {
-                  console.log(
-                    "2. -------------------> Made it to the addPost function"
-                  );
                   if (err) {
                     console.log(
                       "An error occured while storing new post in DB",

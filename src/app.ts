@@ -9,9 +9,9 @@ import { Publisher } from "./types/Publisher";
 
 const publisherModel = require("./models/publisher");
 
-const getAllPublishers: Function = require("./services/getAllPublishers");
+const getAllPublishers: Function = require("./services/publishers/getAllPublishers");
 const rssFetch: Function = require("./services/rssFetch");
-const addNewPublisher: Function = require("./services/addNewPublisher");
+const addNewPublisher: Function = require("./services/publishers/addNewPublisher");
 const loadFeeds: Function = require("./services/loadFeeds");
 
 require("dotenv").config();
@@ -26,7 +26,7 @@ app.use(
   cors({
     origin: ["http://localhost:3000", "http://localhost:5000"],
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Allow seesion cookie from browser to come through
+    credentials: true, // Allow session cookie from browser to come through
   })
 );
 
