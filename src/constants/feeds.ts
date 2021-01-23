@@ -81,11 +81,11 @@ export const feeds = [
   //   image:
   //     "https://pbs.twimg.com/profile_images/1057897610814545920/ehycuqEy_400x400.jpg",
   // },
-  {
-    name: "Metal Bandcamp",
-    url: "http://feeds.metalbandcamp.com/metalbandcamp",
-    image: "https://f4.bcbits.com/img/0001492584_20.jpg",
-  },
+  // {
+  //   name: "Metal Bandcamp",
+  //   url: "http://feeds.metalbandcamp.com/metalbandcamp",
+  //   image: "https://f4.bcbits.com/img/0001492584_20.jpg",
+  // },
   // {
   //   name: "From the Dust Returned",
   //   url: "http://autothrall.blogspot.com/feeds/posts/default",
@@ -104,12 +104,12 @@ export const feeds = [
   //   image:
   //     "https://pbs.twimg.com/profile_images/378800000426281192/2f79380f9756f29ea094e5fa832fcf4f.jpeg",
   // },
-  // {
-  //   name: "Metantoine's Magikal Realm",
-  //   url: "http://metantoinemagicalrealm.blogspot.com/feeds/posts/default",
-  //   image:
-  //     "http://3.bp.blogspot.com/-b_SI79xy3VQ/XoE8jxHcLkI/AAAAAAAAab4/ra-e0slSSwIB6V9mkRMXaXulgN4qzMUlQCK4BGAYYCw/s1600/banner_02.png",
-  // },
+  {
+    name: "Metantoine's Magikal Realm",
+    url: "http://metantoinemagicalrealm.blogspot.com/feeds/posts/default",
+    image:
+      "http://3.bp.blogspot.com/-b_SI79xy3VQ/XoE8jxHcLkI/AAAAAAAAab4/ra-e0slSSwIB6V9mkRMXaXulgN4qzMUlQCK4BGAYYCw/s1600/banner_02.png",
+  },
   // {
   //   name: "Metal Temple",
   //   url: "http://www.metal-temple.com/backend.php?mode=news&type=rss",

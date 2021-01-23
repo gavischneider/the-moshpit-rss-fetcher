@@ -70,6 +70,8 @@ const rssFetch = async (publishers: Publisher[]) => {
                 const specialTags = [
                   "From the Dust Returned",
                   "Metal Bandcamp",
+                  "Metallic Imagery",
+                  "Metantoine's Magikal Realm",
                 ];
                 if (specialTags.includes(newPost.publisher)) {
                   newPost = tagIntervene(newPost);
