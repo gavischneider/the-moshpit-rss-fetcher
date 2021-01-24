@@ -12,7 +12,6 @@ const publisherModel = require("./models/publisher");
 const getAllPublishers: Function = require("./services/publishers/getAllPublishers");
 const rssFetch: Function = require("./services/rssFetch");
 const addNewPublisher: Function = require("./services/publishers/addNewPublisher");
-const loadFeeds: Function = require("./services/loadFeeds");
 
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -49,7 +48,7 @@ mongoose
 app.get("/", async (req: Request, res: Response, next: NextFunction) => {
   //res.send({ data: "Home Route!" });
 
-  const publishers = getAllPublishers((err: Error, data: Publisher[]) => {
+  getAllPublishers((err: Error, data: Publisher[]) => {
     if (err) {
       console.log(`Error getting all publishers: ${err}`);
     } else {
@@ -67,13 +66,14 @@ app.get("/", async (req: Request, res: Response, next: NextFunction) => {
 
 // Get all feeds
 app.get("/feeds", async (req: Request, res: Response, next: NextFunction) => {
-  loadFeeds((err: Error, data: any) => {
+  getAllPublishers((err: Error, data: any) => {
     if (err) {
       console.log(`Problem loading feeds: ${err}`);
     } else {
       console.log(data);
       //console.log(`Type of feeds: ${typeof data}`);
-      res.send({ data: data });
+      //res.send({ data: data });
+      res.send(data);
 
       //rssFetch(data);
     }
